@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.yu.answer.mapper.QuestionMapper">  
+	<select id="queryQuestion" parameterType="Question" resultMap="get_question">  
+	    SELECT * FROM A_QUESTION
+	    
+	    <where>
+	    	<if test="id != null">
+	    		and ID = #{id}
+	    	</if>
+	    	<if test="name != null">
+	    		and NAME = #{name}
+	    	</if>
+	    </where>
+	</select>
+	
+	<resultMap type="Question" id="get_question">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="create_date" property="createDate"/>
+		<result column="update_date" property="updateDate"/>
+	</resultMap>
+	
+	<select id="getQuestionById" parameterType="Question" resultMap="get_question">
+		SELECT * FROM A_QUESTION WHERE ID = #{ID}
+	</select>
+	
+	<select id="getQuestionList" parameterType="int" resultMap="get_question_list">
+		SELECT * FROM A_QUESTION_ITEM where QID = #{qid}
+	</select>
+	
+	<resultMap type="QuestionItem" id="get_question_list">
+		<id column="id" property="id"/>
+		<result column="content" property="content"/>
+		<result column="result" property="result"/>
+		<result column="order_field" property="orderField"/>
+		
+		<association property="question" select="getQuestionById" column="qid"/>
+		<association property="type" select="getQuestionType" column="type_id"/>
+	</resultMap>
+	
+	<select id="getQuestionType" parameterType="int" resultType="QuestionType">
+		SELECT * FROM A_QUESTION_TYPE WHERE ID = #{ID}
+	</select>
+</mapper>  

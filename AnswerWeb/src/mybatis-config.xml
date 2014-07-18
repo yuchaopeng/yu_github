@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration PUBLIC  
+    "-//mybatis.org//DTD Config 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">  
+<configuration>  
+	<typeAliases>
+		<typeAlias type="com.yu.answer.model.Question" alias="Question" />  
+		<typeAlias type="com.yu.answer.model.QuestionItem" alias="QuestionItem" />  
+		<typeAlias type="com.yu.answer.model.QuestionType" alias="QuestionType" /> 
+		<typeAlias type="com.yu.answer.model.Answer" alias="Answer" />  
+		<typeAlias type="com.yu.answer.model.AnswerItem" alias="AnswerItem" />  
+	</typeAliases>
+
+    <mappers>  
+        <mapper resource="com/yu/answer/res/QuestionMapper.xml"/>  
+        <mapper resource="com/yu/answer/res/AnswerMapper.xml"/> 
+    </mappers>  
+</configuration> 
