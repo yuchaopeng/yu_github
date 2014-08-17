@@ -24,7 +24,7 @@
 				</c:when>
 				<c:otherwise>
 					<c:forEach items="${questions }" var="q">
-						<li><a href="<%=request.getContextPath()%>/question/${q.id }">${q.name }   ${q.id }</a></li>
+						<li><a href="<%=request.getContextPath()%>/answer/init?qid=${q.id }">${q.name }   ${q.id }</a></li>
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>

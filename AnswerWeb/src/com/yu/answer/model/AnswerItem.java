@@ -7,8 +7,6 @@ public class AnswerItem {
 	
 	private QuestionItem questionItem;
 
-	private String reply;
-	
 	private String result;
 	
 	public int getId() {
@@ -43,11 +41,4 @@ public class AnswerItem {
 		this.result = result;
 	}
 	
-	public String getReply() {
-		return reply;
-	}
-
-	public void setReply(String reply) {
-		this.reply = reply;
-	}
 }

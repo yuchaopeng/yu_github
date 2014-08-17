@@ -27,7 +27,7 @@
 	</select>
 	
 	<select id="getQuestionList" parameterType="int" resultMap="get_question_list">
-		SELECT * FROM A_QUESTION_ITEM where QID = #{qid}
+		SELECT * FROM A_QUESTION_ITEM where QID = #{qid} order by ORDER_FIELD
 	</select>
 	
 	<resultMap type="QuestionItem" id="get_question_list">

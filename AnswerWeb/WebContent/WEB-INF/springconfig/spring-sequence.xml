@@ -11,15 +11,12 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
        ">
 
-    <bean id="answerMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-        <property name="mapperInterface" value="com.yu.answer.mapper.AnswerMapper"/>
+    <bean id="sequenceMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+        <property name="mapperInterface" value="com.yu.answer.mapper.SequenceMapper"/>
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
-
-    <bean id="answerService" class="com.yu.answer.service.impl.AnswerServiceImpl">
-        <property name="answerMapper" ref="answerMapper"/>
-        <property name="questionService" ref="questionService"/>
-        <property name="sequenceService" ref="sequenceService"/>
+	
+	<bean id="sequenceService" class="com.yu.answer.service.impl.SequenceServiceImpl">
+        <property name="sequenceMapper" ref="sequenceMapper"/>
     </bean>
-    
 </beans>

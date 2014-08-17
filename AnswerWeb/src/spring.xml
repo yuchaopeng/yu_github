@@ -87,4 +87,5 @@
 	
 	<import resource="../springconfig/spring-question.xml"/>
 	<import resource="../springconfig/spring-answer.xml"/>
+	<import resource="../springconfig/spring-sequence.xml"/>
 </beans>

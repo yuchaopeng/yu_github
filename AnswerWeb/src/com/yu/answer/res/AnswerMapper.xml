@@ -2,9 +2,43 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="com.yu.answer.mapper.AnswerMapper">  
-	<sql id='TABLE_SEQUENCE'>SEQ_ANSWER.nextval</sql>
 	
-	<insert id="addAnswer" parameterType="Answer" useGeneratedKeys="true" keyProperty="id" >
-		insert into A_ANSWER(id,name,qid,user_id,create_date,end_date,right_num,wrong_num) values (<include refid="TABLE_SEQUENCE" /> ,#{name},#{question.id,jdbcType=INTEGER},#{user.id,jdbcType=INTEGER},#{createDate,jdbcType=DATE},#{endDate,jdbcType=DATE},#{rightNum},#{wrongNum})
+	<select id="queryAnswer" parameterType="Answer" resultMap="get_answer">
+		select * from A_ANSWER where id = #{id}
+	</select>
+	
+	<resultMap type="Answer" id="get_answer">
+		<id column="id" property="id"/>
+		<result column="create_date" property="createDate"/>
+		<result column="end_date" property="endDate"/>
+		<result column="right_num" property="rightNum"/>
+		<result column="wrong_num" property="wrongNum"/>
+		<association property="question" column="qid" select="getQuestionById"></association>
+	</resultMap>
+	
+	<select id="getAnswerById" parameterType="int" resultMap="get_answer">
+		select * from A_ANSWER where id = #{id}
+	</select>
+	
+	<select id="getAnswerItems" parameterType="int" resultMap="get_answer_item">
+		select * from A_ANSWER_ITEM WHERE qid = #{qid}
+	</select>
+	
+	<resultMap type="AnswerItem" id="get_answer_item">
+		<id property="id" column="id"/>
+		<association property="answer" column="aid" select="getAnswerById"/>
+		<association property="questionItem" column="question_item_id" select="getQuestionById"/>
+	</resultMap>
+	
+	<insert id="addAnswer" parameterType="Answer">
+		insert into A_ANSWER(id,name,qid,user_id,create_date,end_date,right_num,wrong_num) values (#{id} ,#{name},#{question.id,jdbcType=INTEGER},#{user.id,jdbcType=INTEGER},#{createDate,jdbcType=DATE},#{endDate,jdbcType=DATE},#{rightNum},#{wrongNum})
+	</insert>
+	
+	<insert id="addAnswerItem" parameterType="AnswerItem">
+		insert into A_ANSWER_ITEM(id,aid,question_item_id,result) values (#{id} ,#{answer.id,jdbcType=INTEGER},#{questionItem.id,jdbcType=INTEGER},#{result,jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="updateAnswerItem" parameterType="AnswerResultSubmit">
+		update A_ANSWER_ITEM set result = #{answerResult} where id = #{answerItemId}
 	</insert>
 </mapper>  

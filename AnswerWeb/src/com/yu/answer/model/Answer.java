@@ -3,7 +3,7 @@ package com.yu.answer.model;
 import java.util.Date;
 
 public class Answer {
-	private Long id;
+	private int id;
 	
 	private String name;
 	
@@ -18,13 +18,15 @@ public class Answer {
 	private int rightNum;
 	
 	private int wrongNum;
+	
+	//是否已回答完成
+	private int isDone;//0否 1是
 
-
-	public Long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -83,4 +85,14 @@ public class Answer {
 	public void setWrongNum(int wrongNum) {
 		this.wrongNum = wrongNum;
 	}
+
+	public int getIsDone() {
+		return isDone;
+	}
+
+	public void setIsDone(int isDone) {
+		this.isDone = isDone;
+	}
+	
+	
 }

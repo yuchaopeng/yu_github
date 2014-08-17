@@ -9,10 +9,14 @@
 		<typeAlias type="com.yu.answer.model.QuestionType" alias="QuestionType" /> 
 		<typeAlias type="com.yu.answer.model.Answer" alias="Answer" />  
 		<typeAlias type="com.yu.answer.model.AnswerItem" alias="AnswerItem" />  
+		<typeAlias type="com.yu.answer.model.Sequence" alias="Sequence" />
+		<typeAlias type="com.yu.answer.fo.AnswerResultSubmit" alias="AnswerResultSubmit" />
+		
 	</typeAliases>
 
     <mappers>  
         <mapper resource="com/yu/answer/res/QuestionMapper.xml"/>  
-        <mapper resource="com/yu/answer/res/AnswerMapper.xml"/> 
+        <mapper resource="com/yu/answer/res/AnswerMapper.xml"/>
+        <mapper resource="com/yu/answer/res/SequenceMapper.xml"/> 
     </mappers>  
 </configuration> 

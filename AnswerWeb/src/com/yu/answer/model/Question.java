@@ -3,7 +3,7 @@ package com.yu.answer.model;
 import java.util.Date;
 
 public class Question {
-	private String id;
+	private int id;
 	
 	private String name;
 	
@@ -11,11 +11,12 @@ public class Question {
 	
 	private Date updateDate;
 
-	public String getId() {
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
